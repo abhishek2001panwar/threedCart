@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import LocomotiveScroll from "locomotive-scroll";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,12 +23,14 @@ function App() {
 
   useEffect(() => {
     preloadImages();
+    const locomotiveScroll = new LocomotiveScroll();
+
 
   });
 
   const preloadImages = () => {
     for (let i = 0; i < val.maxIndex; i++) {
-      const imageUrl = `./cart/frame_${i.toString().padStart(4, "0")}.jpeg`;
+      const imageUrl = `./fanta/frame_${i.toString().padStart(4, "0")}.jpeg`;
       const img = new Image();
       img.src = imageUrl;
       img.onload = () => {
@@ -95,7 +98,7 @@ function App() {
   })
   return (
     <div className="w-full ">
-      <div  ref={parent} className="w-full h-[600vh]">
+      <div  ref={parent} className="w-full h-[400vh]">
         <div className="w-full h-screen  sticky top-0 left-0">
           <canvas ref={canvasRef} className="w-full h-screen"></canvas>
         </div>
